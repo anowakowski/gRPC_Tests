@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcServer", "GrpcServer\GrpcServer.csproj", "{A646CEFC-2CBA-4C51-8A5D-68E253BDD44E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrpcServer", "GrpcServer\GrpcServer.csproj", "{A646CEFC-2CBA-4C51-8A5D-68E253BDD44E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcClient.ConsoleApp", "GrpcClient.ConsoleApp\GrpcClient.ConsoleApp.csproj", "{7CB79229-4731-4F85-B1E6-4CE323142A71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrpcClient.ConsoleApp", "GrpcClient.ConsoleApp\GrpcClient.ConsoleApp.csproj", "{7CB79229-4731-4F85-B1E6-4CE323142A71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcClient2.ConsoleApp", "GrpcClient2.ConsoleApp\GrpcClient2.ConsoleApp.csproj", "{54631A75-7792-4B97-AB53-65F1F885D85D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrpcClient2.ConsoleApp", "GrpcClient2.ConsoleApp\GrpcClient2.ConsoleApp.csproj", "{54631A75-7792-4B97-AB53-65F1F885D85D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcClient3.BlazorApp", "GrpcClient3.BlazorApp\GrpcClient3.BlazorApp.csproj", "{CB9AE3A6-3908-4772-9591-7CD97609530C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{54631A75-7792-4B97-AB53-65F1F885D85D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54631A75-7792-4B97-AB53-65F1F885D85D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54631A75-7792-4B97-AB53-65F1F885D85D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB9AE3A6-3908-4772-9591-7CD97609530C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB9AE3A6-3908-4772-9591-7CD97609530C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB9AE3A6-3908-4772-9591-7CD97609530C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB9AE3A6-3908-4772-9591-7CD97609530C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
