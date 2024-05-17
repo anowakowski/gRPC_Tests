@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcClient";
+
+service Connections {
+	rpc Subscribe (ClientRequest) returns (stream LogSomeInfo);
+	rpc SendMessage (LogSomeInfo) returns (NewEmptyRequest);
+}
+
+message NewEmptyRequest {}
+
+
+message ClientRequest {
+	string clientName = 1;
+}
+
+message LogSomeInfo {
+	string name = 1;
+	int32 id = 2;
+}
