@@ -58,9 +58,11 @@ var clientData = new ClientRequest()
     ClientName = "client1"
 };
 
+var cancellationToken = new CancellationTokenSource();
+
 var subscribe = client.Subscribe(clientData);
 
-while (await subscribe.ResponseStream.MoveNext(CancellationToken.None))
+while (await subscribe.ResponseStream.MoveNext(cancellationToken.Token))
 {
     var message = subscribe.ResponseStream.Current;
     Console.WriteLine(message.Name + " " + message.Id);
