@@ -1,4 +1,6 @@
 ﻿@page "/"
+@rendermode InteractiveServer
+
 @using GrpcClient3.BlazorApp.Services
 
 @inject ConnectionService ConnService
@@ -20,7 +22,9 @@ else
 {
     @if (model.IsExist)
     {
-        <p>Client currently is installed on your machine and is running</p>
+        <h3>Client currently is installed on your machine and is running</h3>
+        <br />
+        <button class="btn btn-primary" @onclick="ConnectToElement">Connect to element</button>
     }
     else
     {
@@ -35,5 +39,10 @@ else
     protected override void OnInitialized()
     {
         model = ConnService.ChceckIfClientIsInstalledOnMachine();
+    }
+
+    private void ConnectToElement()
+    {
+        ConnService.SendConnectToElement();
     }
 }

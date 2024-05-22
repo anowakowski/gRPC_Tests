@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrpcClient2.ConsoleApp", "G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcClient3.BlazorApp", "GrpcClient3.BlazorApp\GrpcClient3.BlazorApp.csproj", "{CB9AE3A6-3908-4772-9591-7CD97609530C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcClient4.PerformanceTest.ConsoleApp", "GrpcClient4.PerformanceTest.ConsoleApp\GrpcClient4.PerformanceTest.ConsoleApp.csproj", "{D03A509E-A1B2-4DE2-AA2C-4DE587203BCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcClient5.ConsoleApp", "GrpcClient5.ConsoleApp\GrpcClient5.ConsoleApp.csproj", "{60907795-29E1-427B-B01D-A3A8EA2A36FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{CB9AE3A6-3908-4772-9591-7CD97609530C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB9AE3A6-3908-4772-9591-7CD97609530C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB9AE3A6-3908-4772-9591-7CD97609530C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D03A509E-A1B2-4DE2-AA2C-4DE587203BCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D03A509E-A1B2-4DE2-AA2C-4DE587203BCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D03A509E-A1B2-4DE2-AA2C-4DE587203BCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D03A509E-A1B2-4DE2-AA2C-4DE587203BCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60907795-29E1-427B-B01D-A3A8EA2A36FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60907795-29E1-427B-B01D-A3A8EA2A36FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60907795-29E1-427B-B01D-A3A8EA2A36FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60907795-29E1-427B-B01D-A3A8EA2A36FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -58,7 +58,7 @@ string userName = Environment.UserName.ToString();
 
 var clientData = new ClientRequest()
 {
-    ClientName = "client1",
+    ClientName = "Client1",
     ClientMachineName = machineName,
     ClientUserName = userName
 };
@@ -70,7 +70,9 @@ var subscribe = client.Subscribe(clientData);
 while (await subscribe.ResponseStream.MoveNext(cancellationToken.Token))
 {
     var message = subscribe.ResponseStream.Current;
-    Console.WriteLine(message.Name + " " + message.Id);
+    Console.WriteLine("message: " + message.Name + " Id: " + message.Id);
 }
 
+Console.WriteLine("Client1 finished");
 Console.ReadLine();
+

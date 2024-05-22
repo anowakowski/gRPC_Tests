@@ -54,6 +54,24 @@ namespace GrpcServer.Services
             return _newEmptyRequest;
         }
 
+        public override async Task<NewEmptyRequest> SendConnectToElement(ConnectToElementRequest request, ServerCallContext context)
+        {
+            foreach(var subscriber in _messageSubscriptions)
+            {
+                if (subscriber.Key.ClientMachineName.Equals(request.ClientMachineName) && subscriber.Key.ClientUserName.Equals(request.ClientUserName))
+                {
+                    var logSomeInfo = new LogSomeInfo
+                    {
+                        Name = request.ElementName,
+                        Id = 1
+                    };
+                    await subscriber.Value.WriteAsync(logSomeInfo);
+                }
+            }
+
+            return _newEmptyRequest;
+        }
+
         public override Task<ClientExistResponse> CheckIfClientExists(ClientExistRequest request, ServerCallContext context)
         {
             var messageSubscription = _messageSubscriptions.Keys.FirstOrDefault(x => 
