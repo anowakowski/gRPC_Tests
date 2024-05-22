@@ -54,5 +54,21 @@ namespace GrpcServer.Services
             return _newEmptyRequest;
         }
 
+        public override Task<ClientExistResponse> CheckIfClientExists(ClientExistRequest request, ServerCallContext context)
+        {
+            var messageSubscription = _messageSubscriptions.Keys.FirstOrDefault(x => 
+                                            x.ClientMachineName == request.ClientMachineName && 
+                                            x.ClientUserName == request.ClientUserName);
+
+            var clientExistResponse = new ClientExistResponse();
+
+            if (messageSubscription != null)
+            {
+                clientExistResponse.IsExisting = true;
+            }
+
+            return Task.FromResult(clientExistResponse);
+        }
+
     }
 }

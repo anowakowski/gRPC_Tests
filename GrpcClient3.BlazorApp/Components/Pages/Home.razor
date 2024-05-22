@@ -1,4 +1,7 @@
 ﻿@page "/"
+@using GrpcClient3.BlazorApp.Services
+
+@inject ConnectionService ConnService
 
 <PageTitle>Home</PageTitle>
 
@@ -6,7 +9,31 @@
 
 Welcome to your new app.
 
+<br />
+<br />
+
+@if (model == null)
+{
+    <p>Checking if client is installed on your machine...</p>
+}
+else
+{
+    @if (model.IsExist)
+    {
+        <p>Client currently is installed on your machine and is running</p>
+    }
+    else
+    {
+        <p>Client currently is not installed on your machine or not running, please run your client</p>
+    }
+}
+
+
 @code {
-    string machineName = Environment.MachineName.ToString();
-    string userName = Environment.UserName.ToString();
+    private ClientExistModel model = null;
+
+    protected override void OnInitialized()
+    {
+        model = ConnService.ChceckIfClientIsInstalledOnMachine();
+    }
 }

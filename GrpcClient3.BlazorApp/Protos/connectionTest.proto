@@ -5,10 +5,10 @@ option csharp_namespace = "GrpcClient";
 service Connections {
 	rpc Subscribe (ClientRequest) returns (stream LogSomeInfo);
 	rpc SendMessage (LogSomeInfo) returns (NewEmptyRequest);
+	rpc CheckIfClientExists (ClientExistRequest) returns (ClientExistResponse);
 }
 
 message NewEmptyRequest {}
-
 
 message ClientRequest {
 	string clientName = 1;
@@ -19,4 +19,13 @@ message ClientRequest {
 message LogSomeInfo {
 	string name = 1;
 	int32 id = 2;
+}
+
+message ClientExistRequest {
+	string clientMachineName = 1;
+	string clientUserName = 2;
+}
+
+message ClientExistResponse {
+	bool isExisting = 1;
 }

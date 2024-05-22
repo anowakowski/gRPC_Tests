@@ -53,9 +53,14 @@ Console.WriteLine("Client1");
 var channel = GrpcChannel.ForAddress("https://localhost:7187");
 var client = new Connections.ConnectionsClient(channel);
 
+string machineName = Environment.MachineName.ToString();
+string userName = Environment.UserName.ToString();
+
 var clientData = new ClientRequest()
 {
-    ClientName = "client1"
+    ClientName = "client1",
+    ClientMachineName = machineName,
+    ClientUserName = userName
 };
 
 var cancellationToken = new CancellationTokenSource();

@@ -9,9 +9,10 @@ service Connections {
 
 message NewEmptyRequest {}
 
-
 message ClientRequest {
 	string clientName = 1;
+	string clientMachineName = 2;
+	string clientUserName = 3;
 }
 
 message LogSomeInfo {
