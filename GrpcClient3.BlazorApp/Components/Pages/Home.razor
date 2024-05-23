@@ -31,9 +31,13 @@ else
         }
         else
         {
-            @if (connectedToElementModel.IsConnectedToElementSuccessfully)
+            @if (connectedToElementModel.IsConnectedToElementSuccessfully && finishedConnectionToElementModel == null)
             {
                 <button class="btn btn-danger">Connected to element</button>
+            }
+            else
+            {
+                <h5>Successfully Unconnectected with the element</h5>
             }
         }
 }
@@ -47,10 +51,16 @@ else
 @code {
     private ClientExistModel model = null;
     private ConnectedToElementModel connectedToElementModel = null;
+    private FinishedConnectionToElementModel finishedConnectionToElementModel = null;
 
     protected override void OnInitialized()
     {
         model = ConnService.ChceckIfClientIsInstalledOnMachine();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        finishedConnectionToElementModel = await ConnService.SubscribeToElement();
     }
 
     private void ConnectToElement()

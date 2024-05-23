@@ -84,6 +84,16 @@ while (await subscribe.ResponseStream.MoveNext(cancellationToken.Token))
 
             if (!string.IsNullOrEmpty(result))
             {
+                var request = new SubscribeToConnectedElementResponse
+                {
+                    ConnectionWasFinished = true,
+                    ClientMachineName = machineName,
+                    ClientUserName = userName,
+                    ElementName = message.Name
+                };
+
+                client.SendFinishedConnectToElement(request);
+
                 Console.WriteLine("Stop connected element");
             }
         });

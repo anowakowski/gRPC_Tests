@@ -5,6 +5,7 @@ option csharp_namespace = "GrpcClient";
 service Connections {
 	rpc Subscribe (ClientRequest) returns (stream LogSomeInfo);
 	rpc SendMessage (LogSomeInfo) returns (NewEmptyRequest);
+	rpc SendFinishedConnectToElement (SubscribeToConnectedElementResponse) returns (NewEmptyRequest);
 }
 
 message NewEmptyRequest {}
@@ -18,4 +19,11 @@ message ClientRequest {
 message LogSomeInfo {
 	string name = 1;
 	int32 id = 2;
+}
+
+message SubscribeToConnectedElementResponse {
+	bool connectionWasFinished = 1;
+	string elementName = 2;
+	string clientMachineName = 3;
+	string clientUserName = 4;
 }
