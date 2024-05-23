@@ -54,22 +54,41 @@ namespace GrpcServer.Services
             return _newEmptyRequest;
         }
 
-        public override async Task<NewEmptyRequest> SendConnectToElement(ConnectToElementRequest request, ServerCallContext context)
+        public override async Task<ConnectToElementResponse> SendConnectToElement(ConnectToElementRequest request, ServerCallContext context)
         {
-            foreach(var subscriber in _messageSubscriptions)
+            var response = new ConnectToElementResponse();
+            foreach (var subscriber in _messageSubscriptions)
             {
-                if (subscriber.Key.ClientMachineName.Equals(request.ClientMachineName) && subscriber.Key.ClientUserName.Equals(request.ClientUserName))
+                try
                 {
-                    var logSomeInfo = new LogSomeInfo
+                    if (subscriber.Key.ClientMachineName.Equals(request.ClientMachineName) && subscriber.Key.ClientUserName.Equals(request.ClientUserName))
                     {
-                        Name = request.ElementName,
-                        Id = 1
-                    };
-                    await subscriber.Value.WriteAsync(logSomeInfo);
+                        var logSomeInfo = new LogSomeInfo
+                        {
+                            Name = request.ElementName,
+                            Id = 1
+                        };
+                        await subscriber.Value.WriteAsync(logSomeInfo);
+
+                        response.ErrorMessage = string.Empty;
+                        response.IsConnectedToElementSuccessfully = true;
+                    }
+                    else
+                    {
+                        response.HasError = true;
+                        response.ErrorMessage = "Cleint not exist";
+                    }
                 }
+                catch (Exception ex)
+                {
+                    response.HasError = true;
+                    response.IsConnectedToElementSuccessfully = false;
+                    response.ErrorMessage = ex.Message;
+                }
+
             }
 
-            return _newEmptyRequest;
+            return response;
         }
 
         public override Task<ClientExistResponse> CheckIfClientExists(ClientExistRequest request, ServerCallContext context)

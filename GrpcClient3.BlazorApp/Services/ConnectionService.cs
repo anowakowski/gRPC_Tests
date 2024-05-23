@@ -28,7 +28,7 @@ namespace GrpcClient3.BlazorApp.Services
             return new ClientExistModel { IsExist = result.IsExisting };
         }
 
-        public void SendConnectToElement()
+        public ConnectedToElementModel SendConnectToElement()
         {
             var channel = GrpcChannel.ForAddress("https://localhost:7187");
             var client = new Connections.ConnectionsClient(channel);
@@ -40,12 +40,28 @@ namespace GrpcClient3.BlazorApp.Services
                 ClientUserName = _userName
             };
 
-            client.SendConnectToElement(request);
+            var result = client.SendConnectToElement(request);
+
+            var model = new ConnectedToElementModel
+            {
+                HasError = result.HasError,
+                ErrorMessage = result.ErrorMessage,
+                IsConnectedToElementSuccessfully = result.IsConnectedToElementSuccessfully
+            };
+
+            return model;
         }
     }
 
     public class ClientExistModel
     {
         public bool IsExist { get; set; }
+    }
+
+    public class ConnectedToElementModel
+    {
+        public bool HasError { get; set; }
+        public string ErrorMessage { get; set; }
+        public bool IsConnectedToElementSuccessfully { get; set; }
     }
 }

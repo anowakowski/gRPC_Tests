@@ -24,8 +24,19 @@ else
     {
         <h3>Client currently is installed on your machine and is running</h3>
         <br />
-        <button class="btn btn-primary" @onclick="ConnectToElement">Connect to element</button>
-    }
+
+        @if (connectedToElementModel == null)
+        {
+            <button class="btn btn-primary" @onclick="ConnectToElement">Connect to element</button>
+        }
+        else
+        {
+            @if (connectedToElementModel.IsConnectedToElementSuccessfully)
+            {
+                <button class="btn btn-danger">Connected to element</button>
+            }
+        }
+}
     else
     {
         <p>Client currently is not installed on your machine or not running, please run your client</p>
@@ -35,6 +46,7 @@ else
 
 @code {
     private ClientExistModel model = null;
+    private ConnectedToElementModel connectedToElementModel = null;
 
     protected override void OnInitialized()
     {
@@ -43,6 +55,6 @@ else
 
     private void ConnectToElement()
     {
-        ConnService.SendConnectToElement();
+        connectedToElementModel = ConnService.SendConnectToElement();
     }
 }

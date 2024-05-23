@@ -71,6 +71,23 @@ while (await subscribe.ResponseStream.MoveNext(cancellationToken.Token))
 {
     var message = subscribe.ResponseStream.Current;
     Console.WriteLine("message: " + message.Name + " Id: " + message.Id);
+
+    //Console.WriteLine("Stop coonecting to element");
+    //var result = Console.ReadLine();
+
+    if (message.Id > 0)
+    {
+        await Task.Run(() =>
+        {
+            Console.WriteLine("Write 'stop' to Stop coonecting to element");
+            var result = Console.ReadLine();
+
+            if (!string.IsNullOrEmpty(result))
+            {
+                Console.WriteLine("Stop connected element");
+            }
+        });
+    }
 }
 
 Console.WriteLine("Client1 finished");

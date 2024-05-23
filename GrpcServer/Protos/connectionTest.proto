@@ -6,7 +6,7 @@ service Connections {
 	rpc Subscribe (ClientRequest) returns (stream LogSomeInfo);
 	rpc SendMessage (LogSomeInfo) returns (NewEmptyRequest);
 	rpc CheckIfClientExists (ClientExistRequest) returns (ClientExistResponse);
-	rpc SendConnectToElement (ConnectToElementRequest) returns (NewEmptyRequest);
+	rpc SendConnectToElement (ConnectToElementRequest) returns (ConnectToElementResponse);
 }
 
 message NewEmptyRequest {}
@@ -35,4 +35,10 @@ message ConnectToElementRequest {
 	string elementName = 1;
 	string clientMachineName = 2;
 	string clientUserName = 3;
+}
+
+message ConnectToElementResponse {
+	bool hasError = 1;
+	string errorMessage = 2;
+	bool isConnectedToElementSuccessfully = 3;
 }
