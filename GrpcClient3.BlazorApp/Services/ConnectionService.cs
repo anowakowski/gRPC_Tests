@@ -80,7 +80,7 @@ namespace GrpcClient3.BlazorApp.Services
 
                     if (message.ConnectionWasFinished)
                     {
-                        //cancellationToken.Cancel();
+                        cancellationToken.Cancel();
                     }
                 }
 
@@ -92,13 +92,16 @@ namespace GrpcClient3.BlazorApp.Services
                     };
                 }
             }
-            catch (RpcException e)
+            catch (RpcException e) when (e.Status.StatusCode == StatusCode.Cancelled)
             {
-
+                return new FinishedConnectionToElementModel
+                {
+                    IsStopConnectToElement = true
+                };
             }
             catch (Exception ex)
             {
-
+                var message = ex.Message;
             }
 
 

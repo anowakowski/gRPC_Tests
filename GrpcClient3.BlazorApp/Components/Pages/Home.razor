@@ -61,6 +61,14 @@ else
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         finishedConnectionToElementModel = await ConnService.SubscribeToElement();
+
+        if (finishedConnectionToElementModel != null)
+        {
+            if (finishedConnectionToElementModel.IsStopConnectToElement)
+            {
+                this.StateHasChanged();
+            }
+        }
     }
 
     private void ConnectToElement()
